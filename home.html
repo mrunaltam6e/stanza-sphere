@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StanzaSphere • Home</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav container">
+      <a class="logo" href="index.html">Stanza<span>Sphere</span></a>
+      <ul class="nav-links">
+        <li><a class="nav-link active" href="home.html">Home</a></li>
+        <li><a href="poems.html">Poems</a></li>
+        <li><a href="generator.html">Generator</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <canvas id="orbital"></canvas>
+    <div class="hero-inner container">
+      <h1 class="title"><span id="typewriter">Poetry that moves.</span></h1>
+      <p class="subtitle">Write, explore, and remix verses with a playful toolkit.</p>
+      <div class="cta">
+        <a href="poems.html" class="btn primary">Browse Poems</a>
+        <a href="generator.html" class="btn ghost">Generate a Verse</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Poems -->
+  <section class="section" id="featured">
+    <div class="container">
+      <h2 class="section-title">✨ Featured Poems</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Whispers of Dawn</h3>
+          <p>The sky awakens,<br>painted in hues of fire—<br>a new day breathes hope.</p>
+        </div>
+        <div class="card">
+          <h3>Echoes</h3>
+          <p>Silent hallways hum,<br>memories etched on the walls—<br>time bends, then retreats.</p>
+        </div>
+        <div class="card">
+          <h3>Moonlit Path</h3>
+          <p>Shadows weave gently,<br>under silver melodies—<br>dreams walk beside me.</p>
+        </div>
+      </div>
+      <div class="cta" style="margin-top:20px;">
+        <a href="poems.html" class="btn primary">View All Poems</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why StanzaSphere -->
+  <section class="section alt" id="why">
+    <div class="container">
+      <h2 class="section-title">🎨 Why StanzaSphere?</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>🌟 Curated Library</h3>
+          <p>Explore poems across styles, moods, and themes crafted for every soul.</p>
+        </div>
+        <div class="card">
+          <h3>⚡ Interactive Tools</h3>
+          <p>Use our generator to instantly remix or create your own verses.</p>
+        </div>
+        <div class="card">
+          <h3>💌 Share & Connect</h3>
+          <p>Copy, share, or voice-read your poems—bring poetry into every moment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="section" id="cta">
+    <div class="container" style="text-align:center;">
+      <h2 class="section-title">Ready to Create?</h2>
+      <p class="subtitle">Start generating or browsing to spark your imagination.</p>
+      <div class="cta">
+        <a href="generator.html" class="btn primary">✨ Generate Now</a>
+        <a href="contact.html" class="btn ghost">📬 Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> StanzaSphere • Built with ♥</p>
+    </div>
+  </footer>
+
+  <script>
+    // auto update year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
