@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StanzaSphere • Generator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav container">
+      <a class="logo" href="index.html">Stanza<span>Sphere</span></a>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="poems.html">Poems</a></li>
+        <li><a class="nav-link active" href="generator.html">Generator</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Generator Section -->
+  <section class="section alt">
+    <div class="container">
+      <h2 class="section-title">Poem Generator ✨</h2>
+      <div class="card">
+        <div class="controls">
+          <label>Style
+            <select id="styleSelect">
+              <option value="haiku">Haiku</option>
+              <option value="free">Free Verse</option>
+              <option value="couplet">Rhyming Couplet</option>
+            </select>
+          </label>
+          <label>Mood
+            <select id="moodSelect">
+              <option>calm</option>
+              <option>joy</option>
+              <option>melancholy</option>
+              <option>mystery</option>
+            </select>
+          </label>
+          <button id="genBtn" class="btn primary">✨ Generate</button>
+          <button id="copyBtn" class="btn">📋 Copy</button>
+          <button id="speakBtn" class="btn ghost">🔊 Speak</button>
+        </div>
+
+        <!-- Poem output box -->
+        <pre id="generated" class="poem-output">
+🌸 Sample Haiku 🌸
+
+Silent morning air  
+Dreams dissolve into the light  
+Hope begins anew
+        </pre>
+      </div>
+      <p class="muted">Pro tip: Press <kbd>G</kbd> to generate instantly 🎉</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> StanzaSphere • Built with ♥</p>
+    </div>
+  </footer>
+
+  <script>
+    // Show year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Simple generator
+    const poems = {
+      haiku: "Gentle winds passing\nWhispers through the cherry trees\nSpring awakens hearts",
+      free: "Under neon skies,\nvoices drift and wander—\nsearching for belonging.",
+      couplet: "Stars above glow, quiet and bright,\nGuiding our souls through the night."
+    };
+    document.getElementById("genBtn").addEventListener("click", () => {
+      const style = document.getElementById("styleSelect").value;
+      document.getElementById("generated").textContent = poems[style] || "✨ Your poem appears here!";
+    });
+  </script>
+</body>
+</html>

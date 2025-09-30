@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StanzaSphere</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container">
+      <a class="logo" href="home.html">Stanza<span>Sphere</span></a>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="poems.html" class="nav-link active">Poems</a></li>
+        <li><a href="generator.html">Generator</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="section" id="poems">
+    <div class="container">
+      <h2 class="section-title">Featured Poems</h2>
+      <div id="tags" class="tags"></div>
+      <div id="poemGrid" class="grid"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> StanzaSphere • Built with ♥</p>
+    </div>
+  </footer>
+
+  <script>
+    // Poems data
+    const poems = [
+      {
+        title: "Whispers of Dawn",
+        author: "Anonymous",
+        tags: ["calm", "nature"],
+        text: `Silent sky awakens\nSoft light spills across the fields\nMorning hums with peace`
+      },
+      {
+        title: "City Pulse",
+        author: "Urban Poet",
+        tags: ["joy", "energy"],
+        text: `Neon rivers glow\nSteps collide in sync with beats\nDreams are wide awake`
+      },
+      {
+        title: "Echoes of Rain",
+        author: "Melancholy Muse",
+        tags: ["melancholy", "memory"],
+        text: `Rain taps on the glass\nGhosts of laughter drift away\nEcho lingers on`
+      },
+      {
+        title: "Hidden Path",
+        author: "Mystic",
+        tags: ["mystery", "night"],
+        text: `Moon guards secrets deep\nShadows weave a quiet spell\nEyes dare not to blink`
+      }
+    ];
+
+    const tagsEl = document.getElementById("tags");
+    const gridEl = document.getElementById("poemGrid");
+
+    // Collect unique tags
+    const allTags = [...new Set(poems.flatMap(p => p.tags))];
+
+    // Render tags
+    allTags.forEach(tag => {
+      const span = document.createElement("span");
+      span.className = "tag";
+      span.textContent = tag;
+      span.addEventListener("click", () => filterPoems(tag));
+      tagsEl.appendChild(span);
+    });
+
+    // Render poems
+    function renderPoems(list) {
+      gridEl.innerHTML = "";
+      list.forEach(poem => {
+        const card = document.createElement("div");
+        card.className = "card poem";
+        card.innerHTML = `
+          <h3>${poem.title}</h3>
+          <div class="meta">by ${poem.author} • ${poem.tags.join(", ")}</div>
+          <pre>${poem.text}</pre>
+        `;
+        gridEl.appendChild(card);
+      });
+    }
+
+    // Filter poems
+    function filterPoems(tag) {
+      const filtered = poems.filter(p => p.tags.includes(tag));
+      renderPoems(filtered);
+      document.querySelectorAll(".tag").forEach(t => t.classList.remove("active"));
+      [...tagsEl.children].find(t => t.textContent === tag).classList.add("active");
+    }
+
+    // Initial render
+    renderPoems(poems);
+
+    // Update year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
