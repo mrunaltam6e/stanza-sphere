@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StanzaSphere</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container">
+      <a class="logo" href="home.html">Stanza<span>Sphere</span></a>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="poems.html">Poems</a></li>
+        <li><a href="generator.html">Generator</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="section alt" id="generator">
+    <div class="container">
+      <h2 class="section-title">Poem Generator</h2>
+      <div class="card">
+        <div class="controls">
+          <label>Style
+            <select id="styleSelect">
+              <option value="haiku">Haiku</option>
+              <option value="free">Free Verse</option>
+              <option value="couplet">Rhyming Couplet</option>
+            </select>
+          </label>
+          <label>Mood
+            <select id="moodSelect">
+              <option>calm</option>
+              <option>joy</option>
+              <option>melancholy</option>
+              <option>mystery</option>
+            </select>
+          </label>
+          <button id="genBtn" class="btn primary">Generate</button>
+          <button id="copyBtn" class="btn">Copy</button>
+        </div>
+        <pre id="generated" class="poem-output"></pre>
+      </div>
+      <p class="muted">Pro tip: Press <kbd>G</kbd> to generate instantly.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> StanzaSphere • Built with ♥</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
