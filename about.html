@@ -3,45 +3,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>StanzaSphere</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <title>StanzaSphere • About</title>
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
   <header class="header">
     <nav class="nav container">
-      <a class="logo" href="home.html">Stanza<span>Sphere</span></a>
-      <ul class="nav-links">
+      <a class="logo" href="index.html">Stanza<span>Sphere</span></a>
+      <ul class="nav-links" id="navLinks">
         <li><a href="home.html">Home</a></li>
         <li><a href="poems.html">Poems</a></li>
         <li><a href="generator.html">Generator</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a class="nav-link active" href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
+      <div class="nav-actions"><button id="themeToggle">🌓</button><button id="menuBtn" class="menu-btn">☰</button></div>
     </nav>
   </header>
 
   <section class="section" id="about">
     <div class="container">
-      <h2 class="section-title">About</h2>
+      <h2 class="section-title">🌙 About StanzaSphere</h2>
       <div class="card about">
-        <p><strong>Stanza • Sparkle • Sphere</strong> is a tiny poetry universe. It’s fast, responsive, and packed with quality-of-life touches.</p>
+        <p>
+          Once upon a quiet evening, when the world hummed with endless scrolling and fast words,  
+          <strong>StanzaSphere</strong> was born — not as a website, but as a gentle pause.  
+          A place where thoughts could breathe again, and where silence could speak louder than noise.
+        </p>
+      
+        <p>
+          It began with a simple question: <em>What if technology could feel?</em>  
+          What if a few lines of code could understand the rhythm of a heartbeat, the weight of a sigh,  
+          or the smile hidden between two verses?  
+          From that question came a belief — that art and algorithms don’t have to be enemies.  
+          Together, they can create something extraordinary.
+        </p>
+      
+        <p>
+          <strong>StanzaSphere</strong> is our experiment in that belief —  
+          a digital sanctuary where emotions meet expression, where machines assist but the soul still writes.  
+          It invites you to slow down, to listen, and to rediscover the language you thought you’d forgotten:  
+          the language of feeling.
+        </p>
+      
+        <h3 style="margin-top:25px;">🌌 A Space for the Modern Poet</h3>
+        <p>
+          In a world of deadlines and notifications, poetry often feels like a whisper in a storm.  
+          But here, it’s the heartbeat of everything.  
+          Whether you’re a student searching for calm, a creator craving connection, or simply someone who loves words —  
+          StanzaSphere gives you room to write, read, and remember who you are beneath the noise.
+        </p>
+      
+        <h3 style="margin-top:25px;">💡 Why We Exist</h3>
+        <p>
+          We believe poetry isn’t just art — it’s therapy, reflection, and rebellion.  
+          Every poem is a spark of truth, a small defiance against a world moving too fast to notice beauty.  
+          Our mission is simple: to make poetry alive again.  
+          Alive in screens, alive in sound, alive in hearts.
+        </p>
+      
+        <h3 style="margin-top:25px;">🌈 What Makes StanzaSphere Different</h3>
         <ul class="ticks">
-          <li>Super navigation with dropdowns and scroll spy</li>
-          <li>Live search and tag filters</li>
-          <li>Theme saved to your device</li>
-          <li>Accessible by default</li>
+          <li>🧠 <b>AI Meets Emotion:</b> Technology becomes a companion — not a creator. It listens, learns, and helps you express your own voice.</li>
+          <li>🪶 <b>Humanized Words:</b> Every poem feels alive, hand-touched, and deeply personal. It’s not output — it’s expression.</li>
+          <li>🎧 <b>Interactive Experience:</b> You don’t just read poems here — you generate, listen, remix, and share them like living art.</li>
+          <li>🌍 <b>For Every Soul:</b> From dreamers and wanderers to coders and creators — poetry belongs to everyone.</li>
         </ul>
+      
+        <h3 style="margin-top:25px;">💫 The Dream We Carry</h3>
+        <p>
+          We dream of a world where poetry is no longer a hidden hobby but a shared language.  
+          Where verses flow through timelines and classrooms, soothing chaos with quiet honesty.  
+          <strong>StanzaSphere</strong> hopes to be that bridge — between hearts and data, between feeling and function.  
+          Because sometimes, a few lines can change the way we see everything.
+        </p>
+      
+        <blockquote style="margin-top:25px;font-style:italic;color:var(--muted);border-left:3px solid var(--brand);padding-left:14px;">
+          “Poetry isn’t written to impress — it’s written to connect.  
+          Every poem you read here carries a heartbeat, and maybe, it’s a little like yours.”
+        </blockquote>
+      
+        <p style="margin-top:25px;">
+          Thank you for being here — for reading, for feeling, and for keeping poetry alive.  
+          Together, we’re not just writing lines of code or rhyme —  
+          we’re writing proof that emotion still belongs in the digital age.
+        </p>
+      
+        <p style="margin-top:20px;color:var(--muted);">
+          — The StanzaSphere Collective 💜
+        </p>
       </div>
+      
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="container">
-      <p>© <span id="year"></span> StanzaSphere • Built with ♥</p>
-    </div>
-  </footer>
-  <script src="script.js"></script>
+  <footer class="footer"><div class="container"><p>© <span id="year"></span> StanzaSphere • Built with imagination</p></div></footer>
 </body>
 </html>

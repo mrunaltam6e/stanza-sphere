@@ -3,28 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>StanzaSphere</title>
+  <title>StanzaSphere • Poems</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
   <header class="header">
     <nav class="nav container">
-      <a class="logo" href="home.html">Stanza<span>Sphere</span></a>
-      <ul class="nav-links">
+      <a class="logo" href="index.html">Stanza<span>Sphere</span></a>
+      <ul class="nav-links" id="navLinks">
         <li><a href="home.html">Home</a></li>
-        <li><a href="poems.html" class="nav-link active">Poems</a></li>
+        <li><a class="nav-link active" href="poems.html">Poems</a></li>
         <li><a href="generator.html">Generator</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
+      <div class="nav-actions"><button id="themeToggle">🌓</button><button id="menuBtn" class="menu-btn">☰</button></div>
     </nav>
   </header>
 
   <section class="section" id="poems">
     <div class="container">
-      <h2 class="section-title">Featured Poems</h2>
+      <h2 class="section-title">📚 Poem Library</h2>
+      <p class="subtitle">Browse poems by theme — calm, joy, melancholy, and mystery.</p>
       <div id="tags" class="tags"></div>
       <div id="poemGrid" class="grid"></div>
     </div>
@@ -32,82 +34,64 @@
 
   <footer class="footer">
     <div class="container">
-      <p>© <span id="year"></span> StanzaSphere • Built with ♥</p>
+      <p>© <span id="year"></span> StanzaSphere • Crafted with heart</p>
+      <button id="topBtn" class="btn ghost">⬆ Top</button>
     </div>
   </footer>
-
   <script>
-    // Poems data
+    // Poems
     const poems = [
-      {
-        title: "Whispers of Dawn",
-        author: "Anonymous",
-        tags: ["calm", "nature"],
-        text: `Silent sky awakens\nSoft light spills across the fields\nMorning hums with peace`
-      },
-      {
-        title: "City Pulse",
-        author: "Urban Poet",
-        tags: ["joy", "energy"],
-        text: `Neon rivers glow\nSteps collide in sync with beats\nDreams are wide awake`
-      },
-      {
-        title: "Echoes of Rain",
-        author: "Melancholy Muse",
-        tags: ["melancholy", "memory"],
-        text: `Rain taps on the glass\nGhosts of laughter drift away\nEcho lingers on`
-      },
-      {
-        title: "Hidden Path",
-        author: "Mystic",
-        tags: ["mystery", "night"],
-        text: `Moon guards secrets deep\nShadows weave a quiet spell\nEyes dare not to blink`
-      }
-    ];
+    // Calm
+    { title: "Whispers of Dawn", author: "Sai", tags: ["calm"], text: `Soft winds in trees\nWhispers drift across the sky\nPeace within the soul` },
+    { title: "Still Waters", author: "Aria Bloom", tags: ["calm"], text: `Under tranquil skies\nripples dance with sunlight's grace—\nsilence hums a tune.` },
+    { title: "Beneath the Banyan", author: "N. Iyer", tags: ["calm"], text: `Ancient roots embrace\nearth’s secret breath of patience—\ntime forgets to move.` },
 
-    const tagsEl = document.getElementById("tags");
-    const gridEl = document.getElementById("poemGrid");
+    // Joy
+    { title: "City Pulse", author: "Urban Poet", tags: ["joy"], text: `Neon rivers glow\nSteps collide in sync with beats\nDreams are wide awake` },
+    { title: "Summer Laughs", author: "Rhea Sol", tags: ["joy"], text: `Golden air around\nchildren chasing fireflies bright—\nevening sighs with joy.` },
+    { title: "Festival Lights", author: "Jun Park", tags: ["joy"], text: `Drums echo like hearts,\ncolors swirl through crowded streets—\neach smile burns like stars.` },
 
-    // Collect unique tags
-    const allTags = [...new Set(poems.flatMap(p => p.tags))];
+    // Melancholy
+    { title: "Echoes of Rain", author: "Melancholy Muse", tags: ["melancholy"], text: `Rain taps on the glass\nGhosts of laughter drift away\nEcho lingers on` },
+    { title: "Midnight Letters", author: "E. Rae", tags: ["melancholy"], text: `Words I never sent\nfloat like dust on windowpanes—\ntime forgot to heal.` },
+    { title: "Paper Boat", author: "L. A. Noor", tags: ["melancholy"], text: `Childhood dreams set sail,\nwaves dissolve them quietly—\nno shore waits for me.` },
 
-    // Render tags
-    allTags.forEach(tag => {
-      const span = document.createElement("span");
-      span.className = "tag";
-      span.textContent = tag;
-      span.addEventListener("click", () => filterPoems(tag));
+    // Mystery
+    { title: "Hidden Path", author: "Mystic", tags: ["mystery"], text: `Moon guards secrets deep\nShadows weave a quiet spell\nEyes dare not blink` },
+    { title: "Obsidian Sky", author: "Nova Dusk", tags: ["mystery"], text: `Stars blink in Morse code,\nwhispers fold through cosmic winds—\ntruth hides in the void.` },
+    { title: "Glass Labyrinth", author: "Mira Voss", tags: ["mystery"], text: `Steps that never fade,\nreflections lead nowhere fast—\nwho follows whom now?` },
+
+    // Mixed Moods
+    { title: "Infinite", author: "Dreamer", tags: ["joy","mystery"], text: `Stars whisper songs\nTo hearts unbound\nInfinite, eternal.` },
+    { title: "Old Letters", author: "Seren Vale", tags: ["melancholy","calm"], text: `Faded ink still breathes,\nmemories warm like candlelight—\nforgiveness unfolds.` },
+    { title: "Mirage", author: "V. Rehn", tags: ["mystery","melancholy"], text: `Footprints on the sand\nlead where the sun forgets me—\nhope is just a shape.` }
+  ];
+
+    const tagsEl=document.getElementById("tags");
+    const gridEl=document.getElementById("poemGrid");
+    const allTags=[...new Set(poems.flatMap(p=>p.tags))];
+    allTags.forEach(tag=>{
+      const span=document.createElement("span");
+      span.className="tag"; span.textContent=tag;
+      span.addEventListener("click",()=>filterPoems(tag));
       tagsEl.appendChild(span);
     });
-
-    // Render poems
-    function renderPoems(list) {
-      gridEl.innerHTML = "";
-      list.forEach(poem => {
-        const card = document.createElement("div");
-        card.className = "card poem";
-        card.innerHTML = `
-          <h3>${poem.title}</h3>
-          <div class="meta">by ${poem.author} • ${poem.tags.join(", ")}</div>
-          <pre>${poem.text}</pre>
-        `;
+    function render(list){
+      gridEl.innerHTML="";
+      list.forEach(p=>{
+        const card=document.createElement("div");
+        card.className="card poem";
+        card.innerHTML=`<h3>${p.title}</h3><div class="meta">${p.author} • ${p.tags.join(", ")}</div><pre>${p.text}</pre>`;
         gridEl.appendChild(card);
       });
     }
-
-    // Filter poems
-    function filterPoems(tag) {
-      const filtered = poems.filter(p => p.tags.includes(tag));
-      renderPoems(filtered);
-      document.querySelectorAll(".tag").forEach(t => t.classList.remove("active"));
-      [...tagsEl.children].find(t => t.textContent === tag).classList.add("active");
+    function filterPoems(tag){
+      render(poems.filter(p=>p.tags.includes(tag)));
+      document.querySelectorAll(".tag").forEach(t=>t.classList.remove("active"));
+      [...tagsEl.children].find(t=>t.textContent===tag).classList.add("active");
     }
-
-    // Initial render
-    renderPoems(poems);
-
-    // Update year
-    document.getElementById("year").textContent = new Date().getFullYear();
+    render(poems);
+    document.getElementById("year").textContent=new Date().getFullYear();
   </script>
 </body>
 </html>

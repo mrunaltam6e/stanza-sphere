@@ -7,102 +7,105 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <!-- Header -->
   <header class="header">
     <nav class="nav container">
       <a class="logo" href="index.html">Stanza<span>Sphere</span></a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="navLinks">
         <li><a class="nav-link active" href="home.html">Home</a></li>
         <li><a href="poems.html">Poems</a></li>
         <li><a href="generator.html">Generator</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
+      <div class="nav-actions">
+        <button id="themeToggle">🌓</button>
+        <button id="menuBtn" class="menu-btn">☰</button>
+      </div>
     </nav>
   </header>
 
-  <!-- Hero -->
+  <!-- ===== HERO ===== -->
   <section class="hero" id="home">
     <canvas id="orbital"></canvas>
-    <div class="hero-inner container">
-      <h1 class="title"><span id="typewriter">Poetry that moves.</span></h1>
-      <p class="subtitle">Write, explore, and remix verses with a playful toolkit.</p>
+    <div class="hero-inner container fade-in">
+      <h1 class="title" id="typewriter"></h1>
+      <p class="subtitle">
+        Where imagination meets rhythm — and every word becomes a constellation.
+      </p>
       <div class="cta">
-        <a href="poems.html" class="btn primary">Browse Poems</a>
-        <a href="generator.html" class="btn ghost">Generate a Verse</a>
+        <a href="generator.html" class="btn primary">✨ Generate a Poem</a>
+        <a href="poems.html" class="btn ghost">📚 Explore Library</a>
       </div>
     </div>
   </section>
 
-  <!-- Featured Poems -->
-  <section class="section" id="featured">
-    <div class="container">
-      <h2 class="section-title">✨ Featured Poems</h2>
+  <!-- ===== TODAY’S FEATURED VERSE ===== -->
+  <section class="section" id="verse">
+    <div class="container fade-in" style="text-align:center;">
+      <h2 class="section-title">🪶 Today’s Featured Verse</h2>
+      <p id="dailyPoem" class="subtitle" style="font-size:1.2rem;line-height:1.8;margin-top:20px;"></p>
+      <button id="newPoemBtn" class="btn primary" style="margin-top:20px;">🔄 New Verse</button>
+    </div>
+  </section>
+
+  <!-- ===== DISCOVER ===== -->
+  <section class="section alt" id="discover">
+    <div class="container fade-in">
+      <h2 class="section-title">🎨 Why You'll Love StanzaSphere</h2>
       <div class="grid">
-        <div class="card">
-          <h3>Whispers of Dawn</h3>
-          <p>The sky awakens,<br>painted in hues of fire—<br>a new day breathes hope.</p>
-        </div>
-        <div class="card">
-          <h3>Echoes</h3>
-          <p>Silent hallways hum,<br>memories etched on the walls—<br>time bends, then retreats.</p>
-        </div>
-        <div class="card">
-          <h3>Moonlit Path</h3>
-          <p>Shadows weave gently,<br>under silver melodies—<br>dreams walk beside me.</p>
-        </div>
-      </div>
-      <div class="cta" style="margin-top:20px;">
-        <a href="poems.html" class="btn primary">View All Poems</a>
+        <div class="card"><h3>🧠 AI Poem Generator</h3><p>Craft personalized poems using emotion and mood — every line shaped by you.</p></div>
+        <div class="card"><h3>💫 Curated Collections</h3><p>Browse timeless verses and modern emotions across multiple genres and moods.</p></div>
+        <div class="card"><h3>🔊 Voice & Copy</h3><p>Listen to your poems or share them instantly — make your words travel across hearts.</p></div>
+        <div class="card"><h3>🌍 Global Language</h3><p>Translate or generate poetry in multiple languages — love, expressed universally.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- Why StanzaSphere -->
-  <section class="section alt" id="why">
-    <div class="container">
-      <h2 class="section-title">🎨 Why StanzaSphere?</h2>
+  <!-- ===== COMMUNITY ===== -->
+  <section class="section" id="community">
+    <div class="container fade-in">
+      <h2 class="section-title">💜 Our Community</h2>
+      <p class="subtitle">Writers, dreamers, coders, and artists — connected by verses.</p>
       <div class="grid">
-        <div class="card">
-          <h3>🌟 Curated Library</h3>
-          <p>Explore poems across styles, moods, and themes crafted for every soul.</p>
-        </div>
-        <div class="card">
-          <h3>⚡ Interactive Tools</h3>
-          <p>Use our generator to instantly remix or create your own verses.</p>
-        </div>
-        <div class="card">
-          <h3>💌 Share & Connect</h3>
-          <p>Copy, share, or voice-read your poems—bring poetry into every moment.</p>
-        </div>
+        <div class="card"><h3>👩‍💻 Digital Poets</h3><p>Creators exploring how AI can feel human — crafting emotions through code.</p></div>
+        <div class="card"><h3>🎨 Visual Storytellers</h3><p>Turning words into art, blending verse and color to express emotions beyond text.</p></div>
+        <div class="card"><h3>🧭 Learners</h3><p>Using poetry to rediscover mindfulness and creativity in a noisy world.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- Call to Action -->
-  <section class="section" id="cta">
-    <div class="container" style="text-align:center;">
-      <h2 class="section-title">Ready to Create?</h2>
-      <p class="subtitle">Start generating or browsing to spark your imagination.</p>
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="section alt" id="testimonials">
+    <div class="container fade-in" style="text-align:center;">
+      <h2 class="section-title">💬 What People Say</h2>
+      <div id="quotes" style="margin-top:25px;font-size:1.1rem;color:var(--muted);min-height:80px;">
+        “Poetry is how the soul whispers — and here, it finally finds its voice.”
+      </div>
+      <button id="quoteBtn" class="btn ghost" style="margin-top:20px;">✨ Next Quote</button>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="section" id="join">
+    <div class="container fade-in" style="text-align:center;">
+      <h2 class="section-title">🚀 Start Your Journey</h2>
+      <p class="subtitle">Explore, create, and share — your poetic universe awaits.</p>
       <div class="cta">
-        <a href="generator.html" class="btn primary">✨ Generate Now</a>
-        <a href="contact.html" class="btn ghost">📬 Get in Touch</a>
+        <a href="generator.html" class="btn primary">🪄 Start Generating</a>
+        <a href="contact.html" class="btn ghost">📩 Get in Touch</a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>© <span id="year"></span> StanzaSphere • Built with ♥</p>
+      <p>© <span id="year"></span> StanzaSphere • Crafted with 💜 and imagination</p>
+      <button id="topBtn" class="btn ghost">⬆ Top</button>
     </div>
   </footer>
-
-  <script>
-    // auto update year
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>

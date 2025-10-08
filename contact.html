@@ -4,63 +4,49 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>StanzaSphere • Contact</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <!-- Header -->
   <header class="header">
     <nav class="nav container">
       <a class="logo" href="index.html">Stanza<span>Sphere</span></a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="navLinks">
         <li><a href="home.html">Home</a></li>
         <li><a href="poems.html">Poems</a></li>
         <li><a href="generator.html">Generator</a></li>
         <li><a href="about.html">About</a></li>
         <li><a class="nav-link active" href="contact.html">Contact</a></li>
       </ul>
+      <div class="nav-actions"><button id="themeToggle">🌓</button><button id="menuBtn" class="menu-btn">☰</button></div>
     </nav>
   </header>
 
-  <!-- Contact Section -->
   <section class="section alt" id="contact">
     <div class="container">
       <h2 class="section-title">💌 Get in Touch</h2>
-      <p class="subtitle">Have feedback, suggestions, or just want to say hi? Fill out the form below!</p>
-
+      <p class="subtitle">Have feedback or want to collaborate? Drop your message below.</p>
       <div class="card">
         <form id="contactForm" class="form">
-          <div class="row">
-            <label>
-              <span>Name</span>
-              <input required type="text" id="name" placeholder="Jane Doe" />
-            </label>
-            <label>
-              <span>Email</span>
-              <input required type="email" id="email" placeholder="jane@example.com" />
-            </label>
-          </div>
-          <label>
-            <span>Message</span>
-            <textarea required id="message" rows="5" placeholder="Write your message here..."></textarea>
-          </label>
-          <div class="row end">
-            <button class="btn primary" type="submit">🚀 Send</button>
-            <span id="formStatus" class="form-status"></span>
-          </div>
+          <label><span>Name</span><input required type="text" id="name" placeholder="Jane Doe"></label>
+          <label><span>Email</span><input required type="email" id="email" placeholder="jane@example.com"></label>
+          <label><span>Message</span><textarea required id="message" rows="5" placeholder="Write your message here..."></textarea></label>
+          <div class="row end"><button class="btn primary" type="submit">🚀 Send</button><span id="formStatus" class="form-status"></span></div>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>© <span id="year"></span> StanzaSphere • Built with ♥</p>
-    </div>
-  </footer>
+  <footer class="footer"><div class="container"><p>© <span id="year"></span> StanzaSphere • Built with care 💖</p></div></footer>
 
-  <script src="script.js"></script>
+  <script>
+    const form=document.getElementById('contactForm');
+    const status=document.getElementById('formStatus');
+    form.addEventListener('submit',e=>{
+      e.preventDefault();
+      status.textContent="Sending...";
+      setTimeout(()=>{status.textContent="Message sent successfully! 💌";form.reset();},1000);
+    });
+  </script>
 </body>
 </html>
